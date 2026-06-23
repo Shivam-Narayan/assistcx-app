@@ -1,0 +1,343 @@
+# Common Patterns
+
+Frequently used patterns and implementations in AssistCX.
+
+## Data Fetching Patterns
+
+### Basic Fetch
+
+The simplest data fetching pattern:
+
+```typescript
+import { client } from '@/lib/assistcx'
+
+async function fetchUsers() {
+  const users = await client.fetch('/api/users')
+  return users
+}
+```
+
+### With Loading State
+
+Show loading indicators:
+
+```typescript
+'use client'
+
+import { useState, useEffect } from 'react'
+import { client } from '@/lib/assistcx'
+
+export default function UserList() {
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    async function loadUsers() {
+      try {
+        const data = await client.fetch('/api/users')
+        setUsers(data)
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadUsers()
+  }, [])
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>Error: {error}</div>
+  
+  return (
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  )
+}
+```
+
+### With Pagination
+
+Implement pagination:
+
+```typescript
+const [page, setPage] = useState(1)
+const [data, setData] = useState([])
+
+async function loadPage(pageNum) {
+  const result = await client.fetch(`/api/items?page=${pageNum}`)
+  setData(result.items)
+  setPage(pageNum)
+}
+
+return (
+  <>
+    <List items={data} />
+    <button onClick={() => loadPage(page - 1)} disabled={page === 1}>
+      Previous
+    </button>
+    <button onClick={() => loadPage(page + 1)}>
+      Next
+    </button>
+  </>
+)
+```
+
+## Form Patterns
+
+### Controlled Form
+
+```typescript
+'use client'
+
+import { useState } from 'react'
+import { client } from '@/lib/assistcx'
+
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await client.send('/api/contact', formData)
+    alert('Message sent!')
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Name"
+      />
+      <input
+        name="email"
+        type="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="Email"
+      />
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Message"
+      />
+      <button type="submit">Send</button>
+    </form>
+  )
+}
+```
+
+### Form with Validation
+
+```typescript
+const [errors, setErrors] = useState({})
+
+const validate = () => {
+  const newErrors = {}
+  
+  if (!formData.name) {
+    newErrors.name = 'Name is required'
+  }
+  
+  if (!formData.email.includes('@')) {
+    newErrors.email = 'Invalid email'
+  }
+  
+  setErrors(newErrors)
+  return Object.keys(newErrors).length === 0
+}
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  
+  if (validate()) {
+    await client.send('/api/contact', formData)
+  }
+}
+```
+
+## Authentication Patterns
+
+### Protected Routes
+
+```typescript
+// proxy.ts
+import { verifyAuth } from '@/lib/auth'
+
+export async function proxy(request) {
+  const token = request.cookies.get('token')
+  
+  if (!token) {
+    return Response.redirect('/login')
+  }
+  
+  const isValid = await verifyAuth(token)
+  
+  if (!isValid) {
+    return Response.redirect('/login')
+  }
+}
+
+export const config = {
+  matcher: ['/dashboard/:path*']
+}
+```
+
+### Auth Context
+
+```typescript
+// context/AuthContext.tsx
+'use client'
+
+import { createContext, useContext, useState } from 'react'
+
+const AuthContext = createContext(null)
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null)
+
+  const login = async (credentials) => {
+    const userData = await client.send('/api/login', credentials)
+    setUser(userData)
+  }
+
+  const logout = () => {
+    setUser(null)
+  }
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  )
+}
+
+export const useAuth = () => useContext(AuthContext)
+```
+
+## Error Handling Patterns
+
+### Global Error Boundary
+
+```typescript
+'use client'
+
+import { Component } from 'react'
+
+class ErrorBoundary extends Component {
+  state = { hasError: false }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true }
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error:', error, errorInfo)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong.</h1>
+    }
+
+    return this.props.children
+  }
+}
+```
+
+### Retry Pattern
+
+```typescript
+async function fetchWithRetry(url, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await client.fetch(url)
+    } catch (error) {
+      if (i === maxRetries - 1) throw error
+      await sleep(1000 * Math.pow(2, i)) // Exponential backoff
+    }
+  }
+}
+```
+
+## Caching Patterns
+
+### Simple Cache
+
+```typescript
+const cache = new Map()
+
+async function fetchWithCache(url) {
+  if (cache.has(url)) {
+    return cache.get(url)
+  }
+  
+  const data = await client.fetch(url)
+  cache.set(url, data)
+  return data
+}
+```
+
+### TTL Cache
+
+```typescript
+const cache = new Map()
+
+async function fetchWithTTL(url, ttl = 60000) {
+  const cached = cache.get(url)
+  
+  if (cached && Date.now() - cached.timestamp < ttl) {
+    return cached.data
+  }
+  
+  const data = await client.fetch(url)
+  cache.set(url, { data, timestamp: Date.now() })
+  return data
+}
+```
+
+## Real-time Patterns
+
+### WebSocket Connection
+
+```typescript
+import { useEffect, useState } from 'react'
+
+export function useWebSocket(url) {
+  const [messages, setMessages] = useState([])
+
+  useEffect(() => {
+    const ws = new WebSocket(url)
+
+    ws.onmessage = (event) => {
+      setMessages(prev => [...prev, JSON.parse(event.data)])
+    }
+
+    return () => ws.close()
+  }, [url])
+
+  return messages
+}
+```
+
+## Next Steps
+
+- Explore [Recipes](/guides/recipes) for more examples
+- Read [Best Practices](/guides/best-practices)
+- Check [Tutorials](/guides/tutorials) for detailed guides

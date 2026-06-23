@@ -1,0 +1,260 @@
+# Migration Guide
+
+Migrate your existing application to AssistCX.
+
+## Migrating from Version 1.x to 2.x
+
+AssistCX 2.0 introduces several breaking changes. This guide will help you migrate smoothly.
+
+## Breaking Changes
+
+### Configuration Format
+
+**Before (v1.x)**:
+```typescript
+import AssistCX from 'assistcx'
+
+const client = new AssistCX({
+  key: 'your-api-key'
+})
+```
+
+**After (v2.x)**:
+```typescript
+import { createClient } from 'assistcx'
+
+const client = createClient({
+  apiKey: 'your-api-key'
+})
+```
+
+### API Method Names
+
+Method names have been updated for consistency:
+
+| v1.x | v2.x |
+|------|------|
+| `getData()` | `fetch()` |
+| `postData()` | `send()` |
+| `updateData()` | `update()` |
+| `deleteData()` | `remove()` |
+
+### Authentication
+
+Authentication has been simplified:
+
+**Before (v1.x)**:
+```typescript
+client.setAuth({
+  type: 'bearer',
+  token: 'your-token'
+})
+```
+
+**After (v2.x)**:
+```typescript
+client.authenticate('your-token')
+```
+
+## Step-by-Step Migration
+
+### Step 1: Update Dependencies
+
+Update your package.json:
+
+```bash
+npm uninstall assistcx@1
+npm install assistcx@2
+```
+
+### Step 2: Update Imports
+
+Find and replace imports:
+
+```typescript
+// Old
+import AssistCX from 'assistcx'
+
+// New
+import { createClient } from 'assistcx'
+```
+
+### Step 3: Update Configuration
+
+Update your configuration files:
+
+```typescript
+// Old
+const config = {
+  key: process.env.API_KEY,
+  endpoint: 'https://api.example.com'
+}
+
+// New
+const config = {
+  apiKey: process.env.API_KEY,
+  apiUrl: 'https://api.example.com'
+}
+```
+
+### Step 4: Update API Calls
+
+Replace old method calls:
+
+```typescript
+// Old
+const data = await client.getData('/users')
+
+// New
+const data = await client.fetch('/users')
+```
+
+### Step 5: Test Your Application
+
+Run your test suite:
+
+```bash
+npm test
+```
+
+## Migrating from Other Libraries
+
+### From Axios
+
+```typescript
+// Axios
+import axios from 'axios'
+
+const response = await axios.get('/api/data')
+const data = response.data
+
+// AssistCX
+import { client } from '@/lib/assistcx'
+
+const data = await client.fetch('/api/data')
+```
+
+### From Fetch API
+
+```typescript
+// Fetch API
+const response = await fetch('/api/data')
+const data = await response.json()
+
+// AssistCX
+import { client } from '@/lib/assistcx'
+
+const data = await client.fetch('/api/data')
+```
+
+### From Apollo Client (GraphQL)
+
+```typescript
+// Apollo
+const { data } = await apolloClient.query({
+  query: GET_USERS
+})
+
+// AssistCX
+const data = await client.graphql(GET_USERS_QUERY)
+```
+
+## Feature Comparison
+
+| Feature | v1.x | v2.x |
+|---------|------|------|
+| TypeScript | Partial | Full support |
+| Caching | Manual | Automatic |
+| Retries | No | Yes |
+| Interceptors | Basic | Advanced |
+| WebSockets | No | Yes |
+
+## New Features in v2.x
+
+### Automatic Retries
+
+```typescript
+const client = createClient({
+  apiKey: 'key',
+  retries: 3,
+  retryDelay: 1000
+})
+```
+
+### Built-in Caching
+
+```typescript
+const data = await client.fetch('/api/data', {
+  cache: true,
+  ttl: 3600
+})
+```
+
+### Request Interceptors
+
+```typescript
+client.interceptors.request.use((config) => {
+  config.headers['X-Custom'] = 'value'
+  return config
+})
+```
+
+## Common Issues
+
+### Type Errors
+
+Install types:
+
+```bash
+npm install -D @types/assistcx
+```
+
+### Configuration Not Found
+
+Ensure your config file is in the root:
+
+```
+project/
+├── assistcx.config.ts  ✓ Correct location
+└── src/
+    └── assistcx.config.ts  ✗ Wrong location
+```
+
+## Rollback Plan
+
+If you need to rollback:
+
+```bash
+npm uninstall assistcx@2
+npm install assistcx@1.x
+```
+
+## Getting Help
+
+Need migration assistance?
+
+- Check our [Migration FAQ](#)
+- Join our [Discord community](#)
+- Contact support: migration@assistcx.com
+
+## Automated Migration Tool
+
+Use our CLI tool to automate migration:
+
+```bash
+npx assistcx-migrate
+```
+
+This will:
+- Update imports
+- Transform API calls
+- Update configuration
+- Generate a migration report
+
+## Next Steps
+
+After migration:
+
+1. Review [What's New in v2.0](/changelog)
+2. Check [Best Practices](/guides/best-practices)
+3. Explore [New Features](/docs/core-concepts)

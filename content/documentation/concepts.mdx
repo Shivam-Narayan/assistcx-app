@@ -1,0 +1,89 @@
+
+
+## Key Concepts
+
+
+### Agents
+
+**Think of an Agent as a trained team member.**
+
+An Agent is a configured execution entity responsible for interpreting a Task and determining how it 
+should proceed. Each Agent operates within a defined scope and applies structured logic to evaluate 
+incoming data. 
+
+Agents do not directly perform system-level actions. Instead, they decide what needs to happen based on 
+context, rules, and available capabilities. This separation ensures that decision-making remains 
+controlled, auditable, and aligned with business intent.
+
+Agents represent the decision layer of the platform.
+
+---
+
+### Tools
+
+**Think of Tools as the abilities or skills an agent can use.**
+
+A Tool is an executable capability that performs actions on behalf of an Agent. While an Agent determines 
+intent, a Tool carries out the operation itself.
+
+A Tool may interact with external systems, update records, retrieve information, validate data, or 
+trigger workflows. Tools do not determine strategy or direction; they execute defined actions and return 
+results to the Agent for further evaluation.
+
+Tools represent the action layer of the platform and are designed for reuse across multiple workflows to 
+ensure consistency and scalability.
+
+---
+
+### Tasks
+
+**Think of a Task as a unit of work created from an email.**
+
+A Task is a structured unit of work created from inbound communication.
+
+Instead of leaving operational requests embedded within emails, AssistCX converts them into traceable 
+Tasks with defined lifecycle states. Each Task maintains visibility into status, ownership, execution 
+history, and outcomes.
+
+Tasks provide measurability and accountability, forming the operational backbone of the system.
+
+---
+
+### Knowledge
+
+**Think of Knowledge as the reference material agents can read from.**
+
+Knowledge represents the contextual information available to Agents during execution.
+
+This may include policies, documents, structured references, historical records, or domain-specific 
+material. When configured, Agents consult Knowledge to ensure outputs are informed, compliant, and 
+aligned with organizational standards.
+
+Knowledge provides the contextual intelligence that grounds automation in real business understanding.
+
+---
+
+### Issue Management
+**Think of Issue Management as a way to flag and track problems.**
+
+Issue Management governs exception handling within workflows.
+
+When a Task encounters incomplete data, validation failure, or unexpected behavior, an Issue can be 
+raised and tracked formally. This ensures that deviations remain visible and actionable rather than 
+hidden within automation.
+
+Issue Management strengthens reliability by introducing structured oversight into automated execution.
+
+---
+
+### Integrations
+
+**Think of Integrations as the bridges connecting AssistCX to other systems.**
+
+Integrations connect AssistCX to external systems and services within your technology ecosystem.
+
+Through secure connectors and APIs, the platform interacts with email providers, storage systems, 
+enterprise applications, and third-party platforms. Rather than replacing existing infrastructure, 
+AssistCX orchestrates execution across it.
+
+Integrations extend automation beyond the platform while maintaining governance and control.

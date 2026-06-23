@@ -1,0 +1,67 @@
+# Deploy to Production
+
+Deploy your AssistCX application to production.
+
+## Choose Your Platform
+
+Select a deployment platform:
+
+- **Vercel** - Easiest, recommended for most projects
+- **Docker** - For containerized deployments
+- **Self-hosted** - Full control
+
+## Deploy to Vercel
+
+### Step 1: Install Vercel CLI
+
+```bash
+npm install -g vercel
+```
+
+### Step 2: Login
+
+```bash
+vercel login
+```
+
+### Step 3: Deploy
+
+```bash
+vercel deploy --prod
+```
+
+Your app is now live! 🎉
+
+## Environment Variables
+
+Set production environment variables:
+
+```bash
+vercel env add DATABASE_URL
+vercel env add API_KEY
+```
+
+## Custom Domain
+
+Add a custom domain:
+
+1. Go to your project settings
+2. Click "Domains"
+3. Add your domain
+4. Update DNS records
+
+## Monitoring
+
+Monitor your production app:
+
+- View logs in Vercel dashboard
+- Set up error tracking (Sentry)
+- Configure uptime monitoring
+
+## Continuous Deployment
+
+Connect your Git repository for automatic deployments:
+
+1. Push to `main` branch
+2. Vercel automatically builds and deploys
+3. Preview deployments for pull requests

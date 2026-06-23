@@ -1,0 +1,94 @@
+# Add Authentication
+
+Implement secure user authentication in your AssistCX app.
+
+## Overview
+
+This tutorial covers:
+
+- Setting up authentication
+- Creating login/signup pages
+- Protecting routes
+- Managing user sessions
+
+## Step 1: Install Dependencies
+
+```bash
+npm install @assistcx/auth
+```
+
+## Step 2: Configure Authentication
+
+Create an auth configuration:
+
+```typescript
+// lib/auth.ts
+import { createAuth } from '@assistcx/auth'
+
+export const auth = createAuth({
+  providers: ['email', 'google'],
+  secret: process.env.AUTH_SECRET
+})
+```
+
+## Step 3: Create Login Page
+
+```typescript
+// app/login/page.tsx
+'use client'
+
+import { useState } from 'react'
+import { auth } from '@/lib/auth'
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleLogin = async () => {
+    await auth.signIn({ email, password })
+  }
+
+  return (
+    <form onSubmit={handleLogin}>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
+      <button type="submit">Login</button>
+    </form>
+  )
+}
+```
+
+## Step 4: Protect Routes
+
+Protect routes that require authentication:
+
+```typescript
+// proxy.ts
+import { auth } from '@/lib/auth'
+
+export async function proxy(request) {
+  const session = await auth.getSession()
+  
+  if (!session) {
+    return Response.redirect('/login')
+  }
+}
+
+export const config = {
+  matcher: ['/dashboard/:path*']
+}
+```
+
+## Conclusion
+
+You now have a fully functional authentication system!

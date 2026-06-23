@@ -1,0 +1,106 @@
+## Mailbox Polling
+
+Mailbox Polling controls how AssistCX connects to your email systems and continuously fetches new emails for processing.
+
+It is the starting point of the automation pipeline.
+
+Without polling:
+- Emails are not ingested
+- Tasks are not created
+- Agents cannot execute work
+
+This page allows administrators to configure and monitor how AssistCX reads emails.
+
+---
+
+### Mailbox List
+
+The Mailbox List shows all configured mailboxes connected to AssistCX.
+
+Each entry typically displays:
+- Mailbox name or identifier
+- Provider (e.g., Outlook, Exchange)
+- Connection status
+- Polling status (Running / Stopped)
+- Last synced time
+
+Admins can use this list to:
+- Verify active connections
+- Monitor health of mailboxes
+- Manage multiple inboxes for different teams or workflows
+
+---
+
+### Start Polling
+
+Start Polling begins the process of fetching emails from the selected mailbox.
+
+When polling starts:
+1. AssistCX connects to the mailbox
+2. New emails are detected
+3. Emails are ingested into the system
+4. Tasks are generated automatically based on rules
+
+Use Start Polling when:
+- A new mailbox is added
+- Polling was previously stopped
+- Restarting after maintenance or configuration changes
+
+---
+
+### Backdate Polling
+
+Backdate Polling allows AssistCX to fetch emails from a past date instead of only new ones.
+
+This is useful when:
+- Setting up AssistCX for the first time
+- Migrating from another system
+- Recovering missed emails
+- Reprocessing historical data
+
+Example:
+- Backdate to 7 days → fetch last 7 days of emails
+
+This ensures no important emails are skipped during onboarding or downtime.
+
+---
+
+### Polling Frequency
+
+Polling Frequency controls how often AssistCX checks the mailbox for new emails.
+
+Common configurations:
+- Every few minutes (near real-time)
+- Periodic intervals (e.g., 5–15 minutes)
+
+Higher frequency:
+- Faster task creation
+- Near real-time processing
+- Slightly higher system load
+
+Lower frequency:
+- Reduced load
+- Slight delay in task creation
+
+Admins should choose a frequency based on operational needs and email volume.
+
+---
+
+### Polling Logs
+
+Polling Logs provide visibility into mailbox activity and synchronization events.
+
+Logs typically include:
+- Polling start/stop times
+- Number of emails fetched
+- Success or failure status
+- Connection errors
+- Retry attempts
+
+Logs help administrators:
+- Diagnose ingestion issues
+- Monitor system health
+- Investigate missed emails
+- Troubleshoot authentication or connectivity problems
+
+Regular monitoring of logs ensures reliable and uninterrupted email processing.

@@ -1,0 +1,17 @@
+:root {
+  --nextra-content-width: 90rem;
+}
+
+.nextra-search > input {
+  border: 1px solid #d1d5db;
+  height: 32px;
+}
+
+.nextra-navbar .nextra-scrollbar a {
+  font-size: 0.925rem;
+  font-weight: 500;
+}
+
+.nextra-navbar .nextra-scrollbar a[aria-current] {
+  font-weight: 600;
+}

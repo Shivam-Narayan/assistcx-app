@@ -1,0 +1,82 @@
+# Build Your First App
+
+Create your first AssistCX application from scratch.
+
+## Prerequisites
+
+Before starting, make sure you have:
+
+- Node.js 18+ installed
+- A code editor (VS Code recommended)
+- Basic knowledge of React
+
+## Step 1: Create a New Project
+
+Initialize a new AssistCX project:
+
+```bash
+npx create-assistcx-app my-app
+cd my-app
+npm run dev
+```
+
+## Step 2: Create Your First Page
+
+Create a new page:
+
+```typescript
+// app/page.tsx
+export default function Home() {
+  return (
+    <div>
+      <h1>Welcome to AssistCX!</h1>
+      <p>Your first application is running.</p>
+    </div>
+  )
+}
+```
+
+## Step 3: Add Styling
+
+Add styles to your page:
+
+```typescript
+export default function Home() {
+  return (
+    <div className="container">
+      <h1 className="title">Welcome to AssistCX!</h1>
+      <p className="description">Your first application is running.</p>
+    </div>
+  )
+}
+```
+
+## Step 4: Add Interactivity
+
+Add a button with an onClick handler:
+
+```typescript
+'use client'
+
+import { useState } from 'react'
+
+export default function Home() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <h1>Counter: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  )
+}
+```
+
+## Next Steps
+
+Congratulations! You've built your first app. Now try:
+
+- [Add Authentication](/guides/tutorials/add-authentication)
+- [Deploy to Production](/guides/tutorials/deploy-production)

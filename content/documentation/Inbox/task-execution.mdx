@@ -1,0 +1,86 @@
+### Task Execution
+
+Task Execution explains how a task is processed after it has been created and assigned to an agent.
+
+Once a task enters the system, AssistCX routes it to the appropriate agent based on the configured routing logic or classification rules. The assigned agent then processes the task using its configured instructions, tools, and planning logic.
+
+---
+
+### How Task Execution Works
+
+Task execution follows a structured sequence to ensure that requests are processed consistently and transparently.
+
+**1. Task Assignment**
+
+After task generation, the system assigns the task to the configured agent.  
+The assignment is determined by routing rules or intent detection that match the task to the appropriate agent.
+
+---
+
+**2. Context Preparation**
+
+Before execution begins, the agent receives the context required to process the task.
+
+This context typically includes:
+
+- Email content  
+- Attachments  
+- Task metadata  
+- Relevant configuration details  
+
+If the agent has access to **knowledge collections or tools**, these resources are made available during execution.
+
+---
+
+**3. Task Processing**
+
+The agent analyzes the task and applies its configured logic.
+
+During processing, the agent may:
+
+- Interpret the task input  
+- Apply instructions and rules  
+- Retrieve information from knowledge collections  
+- Invoke tools to perform specific actions  
+
+This step determines how the task should be handled and what actions are required.
+
+---
+
+**4. Output Generation**
+
+Once processing is complete, the agent produces a result.
+
+Depending on the task type, the output may include:
+
+- A generated response draft  
+- Extracted structured data  
+- A classification or routing decision  
+- An action triggered in an external system  
+
+The result appears in the **Final Output** section of the task workspace.
+
+---
+
+**5. Status Update**
+
+After execution, the task status is updated automatically.
+
+The system records the execution result and stores processing logs for reference.
+
+These logs capture the steps taken by the agent and help provide traceability for each task.
+
+---
+
+### Execution Visibility
+
+Users can review how a task was processed directly from the Task View.
+
+The interface provides visibility into:
+
+- Current task status  
+- Agent execution logs  
+- Generated outputs  
+- Errors or failures when execution does not succeed  
+
+This visibility allows users to monitor agent behavior, investigate issues, and take corrective action when needed.

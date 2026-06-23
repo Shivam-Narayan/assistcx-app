@@ -1,0 +1,152 @@
+## Profile
+
+The **Profile** section defines the agent’s identity and purpose.  
+It tells the platform what the agent represents, what it is responsible for, and how it should behave when processing tasks.
+
+The values configured here guide how the agent interprets requests and generates outputs.
+
+---
+
+### Overview
+
+The Profile section contains three configuration areas:
+
+- **Identity** – how the agent appears across the platform  
+- **Purpose Definition** – what the agent is responsible for  
+- **Behavioral Configuration** – how the agent processes tasks
+
+Each configuration helps ensure that the agent behaves consistently during task execution.
+
+> **Note:** You can import an existing agent configuration using the **Import** option available in the 
+top-right corner of the editor. Imported configurations can be reviewed and modified across the Profile, 
+Tools, Planning, and Settings sections.
+---
+
+### Identity
+
+The **Identity** fields define how the agent is represented in the platform interface.
+
+#### Agent Icon *(Required)*
+
+The visual identifier of the agent.
+
+The selected icon appears in agent lists, task views, and related interfaces so users can easily recognize which agent is handling a task.
+
+**Example**
+
+A finance automation agent might use a **document or invoice icon** to represent document processing tasks.
+
+---
+
+#### Name *(Required)*
+
+The display name of the agent.
+
+Choose a name that clearly describes the role of the agent so users understand its purpose immediately.
+
+**Example**
+
+`Invoice Processing Agent`  
+`Customer Support Triage Agent`  
+`Meeting Summary Agent`
+
+Clear naming helps teams quickly identify the correct agent when viewing tasks or configuring workflows.
+
+---
+
+### Purpose Definition
+
+These fields define the agent’s objective and how it should present its outputs.
+
+#### Goal *(Required)*
+
+The **Goal** describes the main outcome the agent should achieve when handling a task.
+
+It should clearly state the result the agent is expected to produce.
+
+
+**Example**
+
+`Extract invoice details from vendor emails and prepare structured data for financial processing.`
+
+---
+
+#### Description *(Required)
+
+The **Description** provides a more detailed explanation of the agent’s role and operational boundaries.
+
+This helps teams understand what the agent handles and where its responsibilities begin or end.
+
+**Example**
+
+`This agent processes vendor invoice emails, extracts invoice data, validates key fields, and prepares the information for finance system updates.`
+
+---
+
+### Behavioral Configuration
+
+Behavioral configuration defines how the agent processes tasks and ensures that outputs meet operational expectations.
+
+---
+
+#### Instructions *(Required)*
+
+**Instructions** guide how the agent should interpret tasks and generate outputs.
+
+They describe the reasoning approach, processing logic, and expected response format.
+
+Well-written instructions help ensure consistent agent behavior across similar requests.
+
+**Example**
+
+- Extract invoice number, vendor name, date, and total amount from the document.  
+- Validate that all required fields are present before generating the output.  
+- Return the extracted data in the defined output schema.
+
+---
+
+#### Rules *(Required)*
+
+**Rules** define mandatory constraints that the agent must follow during execution.
+
+Rules help enforce operational standards and prevent unintended behavior.
+
+Examples of rules may include:
+
+- Do not process emails without attachments.  
+- Reject invoices if the vendor name is missing.  
+- Do not modify extracted data unless validation fails.
+
+Rules ensure that the agent operates within clearly defined boundaries.
+
+---
+
+#### Success Criteria
+
+**Success Criteria** define how the system determines whether a task has been completed successfully.
+
+These criteria act as validation checks for the agent’s output.
+
+Examples may include:
+
+- All required fields must be populated.  
+- Extracted invoice amount must match the document total.  
+- Output must follow the defined schema structure.
+
+Clear success criteria help ensure reliable task completion.
+
+---
+
+#### Add New Skill
+
+The **Add New Skill** option allows additional capabilities to be attached to the agent.
+
+Skills extend what the agent can do during task execution and may include specialized behaviors, integrations, or processing logic.
+
+For example, a skill may allow an agent to:
+
+- Perform advanced data extraction  
+- Apply domain-specific validations  
+- Trigger actions in external systems
+
+Adding skills enables the agent to support more advanced workflows without changing its core identity or purpose.

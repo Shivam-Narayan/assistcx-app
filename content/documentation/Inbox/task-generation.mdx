@@ -1,0 +1,75 @@
+## Task Generation
+
+Task Generation explains how incoming emails are converted into structured tasks in AssistCX.  
+Instead of processing raw emails directly, the platform standardizes requests as tasks so they can be executed by agents, tracked through the Task Inbox, and reviewed when necessary.
+
+---
+
+### How Tasks Are Generated
+
+When an email arrives in a connected mailbox, AssistCX processes it through a structured pipeline that transforms the message into a task.
+
+**1. Email Capture**
+
+Incoming emails are retrieved from the configured mailbox. During this stage, the system collects the message content, attachments, sender information, and timestamps.
+
+Once captured, the email becomes visible in the **Email View** of the Task Inbox.
+
+---
+
+**2. Intent Identification**
+
+The system analyzes the email content to determine the purpose of the request.
+
+Classification logic or configured rules help identify the type of request being made, such as invoice processing, support requests, approval workflows, or data extraction.
+
+---
+
+**3. Task Creation**
+
+After the request type is identified, AssistCX creates a structured task linked to the email.
+
+Each task contains the operational information required for processing, including:
+
+- Task ID
+- Associated email
+- Attachments
+- Assigned agent
+- Execution status
+
+The task becomes visible in **Task View**, where users can monitor its progress.
+
+---
+
+**4. Agent Assignment**
+
+Once the task is created, it is routed to an appropriate agent for processing.
+
+The assigned agent applies its configured instructions, tools, and planning logic to execute the task and generate the required output.
+
+---
+
+### Task Creation Modes
+
+Tasks may be generated in different ways depending on workflow configuration.
+
+**Automatic Creation**
+
+Tasks are generated automatically when the system detects actionable content in an incoming email.  
+This allows requests to enter the execution workflow without manual intervention.
+
+**Manual Creation**
+
+Users can manually create tasks from an email when review is required before automation begins.
+
+**Retry or Re-trigger**
+
+If execution fails or produces incomplete results, users can retry the task from **Task View**, allowing the agent to process the request again.
+
+---
+
+### Why Task Generation Matters
+
+Converting emails into tasks creates a consistent operational workflow.
+
+Tasks allow teams to track requests, automate execution through agents, and review results from a single workspace, ensuring visibility from intake to resolution.

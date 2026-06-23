@@ -1,0 +1,129 @@
+## Intent Classes
+
+Intent Classes define how AssistCX understands incoming emails and decides which agent should handle them.
+
+They act as the classification layer that converts unstructured communication into structured work.
+
+Before any task is created or agent is assigned, AssistCX first answers:
+
+"What is this email trying to achieve?"
+
+The answer to that question is the **intent**.
+
+---
+
+### What is an Intent?
+
+An Intent represents the purpose or type of request contained in an email.
+
+Examples:
+- Invoice submission
+- Support request
+- Account update
+- Approval request
+- Information query
+
+By identifying intent, AssistCX can:
+- Categorize the request
+- Create the correct task type
+- Route it to the right agent automatically
+
+Intent detection is the foundation of automated task routing.
+
+---
+
+### Intent List
+
+The Intent List shows all configured intents available in the system.
+
+Each intent typically includes:
+- Intent name
+- Description
+- Status (Active / Inactive)
+- Confidence threshold
+- Assigned agent
+- Last updated details
+
+Admins can use the list to:
+- Create new intents
+- Edit existing ones
+- Enable or disable intents
+- Manage routing logic
+
+Well-defined intents improve classification accuracy and reduce manual intervention.
+
+---
+
+### Confidence Threshold
+
+Confidence Threshold defines how certain the system must be before assigning an intent automatically.
+
+AssistCX evaluates each email and assigns a confidence score (e.g., 0–100%).
+
+The threshold determines whether the system should:
+- Auto-classify
+- Or require manual review
+
+---
+
+### How it Works
+
+If confidence ≥ threshold:
+- Task is automatically created
+- Agent is automatically assigned
+
+If confidence < threshold:
+- Task may require manual validation
+- User review may be triggered
+
+---
+
+### Why It Matters
+
+Higher threshold:
+- Fewer incorrect classifications
+- More manual review
+- Slower automation
+
+Lower threshold:
+- Faster automation
+- Higher risk of misclassification
+
+Admins should balance speed and accuracy based on operational needs.
+
+---
+
+## Agent Mapping
+
+Agent Mapping connects each intent to the agent responsible for handling it.
+
+Once intent is identified, the mapped agent automatically receives the task.
+
+---
+
+### How Mapping Works
+
+Example:
+
+| Intent | Assigned Agent |
+|--------|----------------|
+| Invoice | Finance Agent |
+| Support | Support Agent |
+| Approval | Operations Agent |
+
+When an email matches "Invoice", it is directly routed to the Finance Agent.
+
+---
+
+### Benefits of Agent Mapping
+
+- Automatic routing
+- Reduced manual assignment
+- Faster task handling
+- Clear ownership
+- Consistent execution
+
+Different intents can map to different specialized agents for better results.
+
+---
+

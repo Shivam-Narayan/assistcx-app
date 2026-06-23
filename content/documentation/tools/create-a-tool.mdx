@@ -1,0 +1,69 @@
+## Create a Tool
+
+Creating a tool defines the action it performs and how agents interact with it during task execution.
+
+Tools enable agents to perform operational actions such as retrieving data, updating records, or triggering external workflows. Proper configuration ensures the tool executes reliably and returns results that agents can interpret correctly.
+
+---
+
+### Tool Name and Purpose
+
+This step defines the identity and intent of the tool.
+
+Provide a clear **tool name** and a short description that explains what the tool does and when it should be used.
+
+A well-defined purpose helps users understand the role of the tool and allows agents to invoke it appropriately during task execution.
+
+Example:
+
+- Tool Name: `Update Customer Address`
+- Description: Updates a customer's address in the CRM system using validated input data.
+
+---
+
+### Inputs Required
+
+Inputs specify the data required for the tool to execute successfully.
+
+Define the expected input fields along with their data types and validation rules. Inputs may include required fields as well as optional parameters depending on the workflow.
+
+For example, a tool that updates customer information may require inputs such as:
+
+- Customer ID
+- New address
+- Updated contact details
+
+Clear input definitions reduce execution errors and ensure the tool receives the correct data during runtime.
+
+---
+
+### Output Response Format
+
+The output format defines the structure of the response returned by the tool after execution.
+
+This structure allows the agent to interpret the result and determine the next step in the workflow.
+
+A typical response includes:
+
+- Output fields containing the returned data
+- A success response indicating the action completed correctly
+- An error response describing any execution failure
+
+Maintaining a consistent output structure helps agents process tool responses reliably.
+
+---
+
+### Test Tool
+
+Before making a tool available to agents, it should be tested to verify that it behaves as expected.
+
+Testing allows you to run the tool using sample inputs and confirm that the response matches the defined output structure.
+
+During testing you should verify that:
+
+- Inputs are accepted and validated correctly
+- The tool executes the intended action
+- Responses are returned in the expected format
+- External integrations and credentials work correctly
+
+Testing ensures the tool performs reliably before it is used in operational workflows.

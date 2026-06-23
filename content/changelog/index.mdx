@@ -1,0 +1,378 @@
+# Changelog
+
+## [v3.52.10] Latest
+
+✨ Discover What's New in v3.52 ✨
+
+A release series delivering RBAC/permissions hardening, agent tools expansion, email filtering improvements, assistant module routing, and incremental patch fixes.
+
+### 🚀 New Features
+
+- 📁 **Assistant Module Routing**
+  - Added new routes for data files and collections in the assistant module.
+  - Added configurations inside the Assistant module in the user_role file.
+
+### 🛠️ Enhancements
+
+- 🤖 **Agent Tools Integrations**
+  - Added API tools in agent tools integrations.
+  - Renamed get agent tools route URL for consistency.
+  - Minor fix for agent-tools permission in agents module.
+  - Minor changes for embedding model.
+  - Removed full access from integration defaults.
+
+- 📧 **Email & Mailbox Filtering**
+  - Refactored email filtering logic to conditionally include archived tasks based on status filter.
+  - Removed delete email access from default roles.
+  - Added mailbox-filters route and enhanced agent data resolution in permissions.
+
+- 🔒 **RBAC & Permissions**
+  - Enhanced agent preview retrieval with inherited data filters and access verification.
+  - Enhanced error handling in inherited data filters resolution (HTTP 401 on access denial).
+  - Enhanced permissions handling with inherited data filters and refactored RBAC utility functions.
+  - Added `/class-groups` and `/users` routes to platform modules configuration.
+  - Added `/version-histories` route to platform modules configuration.
+  - Added `/integrations-llms` route to agent LLMs module and updated access routes.
+  - Minor changes in access level configurations.
+
+### 🐛 Bug Fixes
+
+- 🔧 **Export**
+  - Fixed bug in export agent task timestamp.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.52.0] 🔒 Assistant Refactor, Permissions Hardening & HITL
+
+✨ Discover What's New in v3.52.0 ✨
+
+A significant release with permissions hardening, assistant service refactoring, and HITL improvements in the live agent.
+
+### 🛠️ Enhancements
+
+- 🔒 **Permissions**
+  - Enhanced permissions handling by denying access for empty `data_permission` keys.
+  - Added core route check for data filters.
+
+- 🤖 **Assistant Services**
+  - Refactored file handling: replaced `file_ids` with `attachments` in query processing.
+  - Enhanced query screening guidelines for `DirectResponse` in prompts.
+
+- 🔄 **HITL (Human-in-the-Loop)**
+  - HITL improvement in Live agent.
+  - Minor improvement in live agent.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.51.0] 🔧 Filter Params Hotfix
+
+A focused hotfix release resolving query parameter filter issues introduced by the RBAC revamp.
+
+### 🐛 Bug Fixes
+
+- 🔧 **Filter Params**
+  - Resolved filter issue for routes affected by the RBAC revamp.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.50.5] 📄 OCR & Task Agent Graph Improvements
+
+✨ Discover What's New in v3.50 ✨
+
+A series of releases improving the DocumentParser with RapidOCR, refactoring the task agent graph for cleaner execution, and scoping data filters to agents and knowledge only.
+
+### 🛠️ Enhancements
+
+- 📄 **Document Parser (OCR)**
+  - Updated OCR model paths in DocumentParser for RapidOCR integration.
+  - Removed modelscope dependency and related model download code for a lighter footprint.
+
+- 🤖 **Task Agent Graph**
+  - Used setup agent graph in `execute_task`.
+  - Graph setup refactoring and reuse.
+  - Simplified task output tool and process.
+  - Improved interrupt payload logic.
+  - Improved LLM review flow.
+  - Minor refactoring for cleaner execution.
+
+- 🔄 **HITL**
+  - Removed feedback in HITL (Reject now handles the feature).
+
+- 🤖 **Agent Assignment**
+  - Added `get_agents_by_assignment` repository function.
+
+- 🔒 **Data Filters**
+  - Removed data filters from all modules except agents and knowledge for cleaner scoping.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.50.1] 🤖 Agent Assignment, Exa Integration & Research Timestamps
+
+✨ Discover What's New in v3.50.1 ✨
+
+Introducing email-to-agent assignment by description, Exa search integration, execution timing in research mode, and attachment validation.
+
+### 🚀 New Features
+
+- 🔍 **Exa Integration**
+  - Added Exa search integration for enhanced web research capabilities.
+
+- ⏱️ **Research Mode Timestamps**
+  - Added execution timing (`start_time` / `end_time`) to assistant streaming response in research mode.
+
+### 🛠️ Enhancements
+
+- 📧 **Email Agent Assignment**
+  - Emails are now assigned agents based on agent description rather than intent class.
+
+- 📎 **Attachment Validation**
+  - Added validation for attachment file type in the reprocess endpoint.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.50.0] 🔒 RBAC Revamp & Human Review Enhancements
+
+✨ Discover What's New in v3.50.0 ✨
+
+A landmark release merging the comprehensive RBAC revamp, removing the deprecated RAG agent, and enhancing the human review workflow.
+
+### 🚀 New Features
+
+- 🔒 **RBAC Revamp**
+  - Merged comprehensive RBAC revamp with permission simplification and standardization.
+
+### 🛠️ Enhancements
+
+- 🔄 **Human Review**
+  - Added question generation for human reviewer in the review workflow.
+  - Human review history serialization.
+  - Refactored tool generation to include human review flag.
+
+### 🗑️ Deprecations
+
+- 🤖 **RAG Agent**
+  - Removed deprecated RAG agent from the codebase.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.49.0] 🔌 Agent Tools Data, Data Extractor & Integration Improvements
+
+✨ Discover What's New in v3.49 ✨
+
+A focused release improving agent tools data for integrations, removing legacy data extractor code, refining the model generator, and adding mailbox polling fixes.
+
+### 🚀 New Features
+
+- 🛠️ **Agent Tools Data**
+  - Improvements in agent tools data for integrations.
+  - Added 3 new fields in the migration for agent tools.
+
+### 🛠️ Enhancements
+
+- 📡 **Mailbox Polling**
+  - Minor change in backend worker for periodic polling order.
+
+- 🔬 **Data Extractor**
+  - Removed legacy data extractor implementation to streamline the codebase.
+  - Updated description for Extract Structured Data tool for improved clarity.
+  - Minor changes in data extractor.
+
+- 🤖 **Model Generator**
+  - Improved model generator with better structure.
+
+- 🔄 **Human Review**
+  - Refactored human review logic and updated rejection prompt for clarity.
+
+- 🔌 **Integrations API**
+  - Renamed `GET/provider` to `GET/providers` for API consistency.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.48.16] 🔧 Dependencies & Pause State
+
+### 🛠️ Enhancements
+
+- 📦 **Dependencies**
+  - Updated langchain and langgraph versions in requirements.txt.
+
+- ⏸️ **Task State**
+  - Included paused status in task state handling.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.48.10] ⏸️ Task Pause/Resume, Connection Health Check & Activity Log
+
+✨ Discover What's New in v3.48.10 ✨
+
+A series of patch releases adding task pause/resume support, connection health checks, and activity log fallback improvements.
+
+### 🚀 New Features
+
+- ⏸️ **Task Pause & Resume**
+  - Added permissions for resume task.
+  - Updated exit condition in `TaskAgentGraph` to handle paused tasks for human review.
+  - Refactored pending review extraction in `TaskExecutor` and `TaskAgentGraph`.
+
+- 🔌 **Connection Health Check**
+  - Implemented connection health check endpoint and response schema.
+  - Added triggers and tools to provider endpoints.
+  - Permission added to the new test endpoint.
+
+### 🛠️ Enhancements
+
+- 📊 **Activity Log**
+  - Added fallback user name (`External system`) in activity log when task is retried via API key.
+
+- 🔌 **Provider API**
+  - Combined provider API endpoints for cleaner access.
+  - Fixed minor connection repository issues.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.48.7] 🔌 Connections, Credits API & Human Review Fixes
+
+✨ Discover What's New in v3.48.7 ✨
+
+A release series adding a credits & token usage API, enriching connection data with creator names, and fixing human review edge cases.
+
+### 🚀 New Features
+
+- 💳 **Credits & Token Usage API**
+  - Added API for credits and token usage for agent task output (latest or by output ID).
+
+- 🔌 **Connection Enhancements**
+  - Added `user_name` field to `ConnectionDetail` schema.
+  - Batch-fetch creator names for connections and assign to `user_name` field.
+  - Added user name attachment to connection creation and updates.
+
+### 🛠️ Enhancements
+
+- 🔒 **Permissions**
+  - Permissions added for all new v4 endpoints.
+  - Added `provider_key` to auth schemas for integration mapping.
+  - Permissions added for integration modules.
+
+### 🐛 Bug Fixes
+
+- 🔄 **Human Review**
+  - Fixed metadata handling for human review checks to prevent errors with missing metadata.
+  - Enhanced error handling in human review functions and improved code formatting.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.48.3] 🛠️ Integration Catalog, Execution Plan & DB Patches
+
+### 🛠️ Enhancements
+
+- 📋 **Integration Catalog**
+  - Renamed integration catalog endpoint to `/provider`.
+  - Added `provider_key` to auth schemas for integration mapping.
+  - Fixed rename of integration catalog endpoint.
+
+- 🤖 **Execution Plan**
+  - Execution plan improvements and prompt refinements.
+
+- 🗄️ **Database**
+  - DB patch to fill in empty `created_at` and `updated_at` fields.
+  - Added token usage key to task output.
+
+### 🐛 Bug Fixes
+
+- 🔧 **Attachment**
+  - Safety check for null value in attachment.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.48.2] 🔌 Integration V4, RBAC Simplification & HITL Refactoring
+
+✨ Discover What's New in v3.48.2 ✨
+
+A significant update introducing the Integration V4 model, RBAC simplification, HITL improvements, and a new async database pool manager.
+
+### 🚀 New Features
+
+- 🔌 **Integration V4**
+  - New Integration V4 model with updated auth schemas, triggers, S3, and Outlook support.
+  - New connection APIs, catalog APIs, tool binding APIs, task source APIs, and event inbox APIs.
+  - New OpenAI validator.
+
+- 🔄 **HITL Refactoring**
+  - HITL API route for resuming tasks.
+  - New task output tool.
+
+- 🗄️ **Async DB Pool Manager**
+  - New async database pool manager for improved connection handling.
+
+### 🛠️ Enhancements
+
+- 🔒 **RBAC**
+  - RBAC simplification and revamp for cleaner permission management.
+
+- 📄 **Data Extractor**
+  - Data extraction enhancements with combined extraction tools.
+  - Email body added to email data extraction.
+  - Email file URL introduced.
+
+- 📧 **Notifications**
+  - Added email and task failure notification templates.
+
+### 🐛 Bug Fixes
+
+- 🔧 **Minor Fixes**
+  - Various minor bug fixes across the platform.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.48.1] 📚 Knowledge Base Tools, RBAC & Document Parser
+
+### 🚀 New Features
+
+- 📚 **Knowledge Base Default Tools**
+  - Set default tools for knowledge base in agents.
+  - Added default tool configuration for agents with knowledge collection handling.
+  - New task output tool registered to agent config.
+
+### 🛠️ Enhancements
+
+- 🔒 **RBAC**
+  - Enhancement to RBAC permissions system.
+
+- 📄 **Document Parser**
+  - Removed unused parser files for DOCX, Markdown, PPTX, and XLSX.
+  - Improved document file handling.
+
+- 🔍 **Knowledge Search**
+  - Preprocessed filters in knowledge search.
+  - Converted list to string in Milvus metadata.
+  - Used text type for list fields in metadata.
+
+- 🛠️ **Toolkits**
+  - Refactored summarization and web search toolkits for improved structure and error handling.
+  - Removed deprecated toolkits.
+
+### 🐛 Bug Fixes
+
+- 🔧 **Minor Fixes**
+  - Minor bug fixes across knowledge base and agent configuration.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.48.0]
+
+✨ Discover What's New in v3.48 ✨
+
+A focused release delivering assistant streaming improvements and better observability for the Milvus vector store.
+
+### 🛠️ Enhancements
+
+- 📡 **Assistant Streaming**
+  - Send agent state before the final answer for real-time progress visibility.
+  - Minor improvements in assistant stream handling.
+
+- 📊 **Milvus Observability**
+  - Added log limits for milvus-standalone to prevent log flooding.
+
+We continuously work to improve our platform, making it more robust, flexible, and user-friendly. Thank you for your continued support and feedback! 🚀
+
+## [v3.47.2] 🔧 External Task Hotfix & API Refinements
+ 

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.25/MicrosoftTeams.schema.json",
+  "version": "1.1.0",
+  "manifestVersion": "1.25",
+  "id": "22ec7a5d-afea-45a2-9b1c-b12c1019bee5",
+  "name": {
+    "short": "AssistCX",
+    "full": "AssistCX - AI-powered customer support for Microsoft Teams"
+  },
+  "developer": {
+    "name": "Aexonic Technologies Pvt Ltd",
+    "websiteUrl": "https://assistcx.aexonic.com",
+    "privacyUrl": "https://assistcx.aexonic.com/privacy",
+    "termsOfUseUrl": "https://assistcx.aexonic.com/terms"
+  },
+  "description": {
+    "short": "AI-powered customer support assistant",
+    "full": "AssistCX helps your support team handle customer queries faster using AI. Get instant suggestions, auto-responses, and analytics — all inside Microsoft Teams."
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#6264A7",
+  "isFullScreen": true,
+  "validDomains": ["assistcx.aexonic.com"],
+  "staticTabs": [
+    {
+      "entityId": "assistcx-home",
+      "name": "Home",
+      "contentUrl": "https://assistcx.aexonic.com",
+      "websiteUrl": "https://assistcx.aexonic.com",
+      "scopes": ["personal"]
+    }
+  ],
+  "permissions": ["identity", "messageTeamMembers"],
+  "webApplicationInfo": {
+    "id": "9aca8ae2-c92e-4998-bce4-5542670d6f60",
+    "resource": "api://assistcx.aexonic.com/9aca8ae2-c92e-4998-bce4-5542670d6f60"
+  }
+}

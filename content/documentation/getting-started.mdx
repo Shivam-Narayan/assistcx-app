@@ -1,0 +1,92 @@
+---
+title: Getting Started
+description: Learn how to get started with AssistCX
+---
+
+# Getting Started
+
+This guide will help you get started with AssistCX.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- Node.js 18.0 or later
+- npm or pnpm package manager
+- A code editor (VS Code recommended)
+
+## Installation
+
+Install AssistCX using npm or pnpm:
+
+```bash
+npm install assistcx
+# or
+pnpm add assistcx
+```
+
+## Configuration
+
+Create a configuration file in your project root:
+
+```typescript
+// assistcx.config.ts
+export default {
+  // Your configuration here
+}
+```
+
+## Next Steps
+
+Now that you have AssistCX installed, check out:
+
+- [Guides](/guides) - Learn common patterns and best practices
+- API Reference - Detailed API documentation
+
+
+### Overview (Page-1)
+
+#### What is AssistCX?
+AssistCX is an AI-powered workflow automation platform designed to convert incoming emails and messages into structured tasks, execute them using intelligent agents, and generate accurate, context-aware outputs with minimal human effort.
+
+Instead of manually reading emails, understanding intent, assigning work, and following up, AssistCX automates this entire flow using a combination of **Agents, Tools, Knowledge, and Integrations**. It helps teams reduce operational overhead, improve response accuracy, and scale task handling without increasing manpower.
+
+AssistCX is commonly used for scenarios such as:
+- Invoice processing and routing
+- Customer support request handling
+- Operations and back-office automation
+- Data extraction and structured responses from unstructured emails
+
+---
+
+#### How AssistCX Works
+At a high level, AssistCX follows a simple but powerful workflow:
+
+**Email → Task → Agent → Output**
+
+Here’s how the flow works step by step:
+
+1. **Email Ingestion**
+   - AssistCX connects to your mailbox and continuously monitors incoming emails.
+   - New emails are captured through mailbox polling or integrations.
+
+2. **Task Creation**
+   - Incoming emails are analyzed for intent and context.
+   - Based on configured rules and intent classes, emails are converted into structured tasks.
+
+3. **Agent Execution**
+   - An Agent is assigned to the task.
+   - The Agent understands *what needs to be done* using its identity, capabilities, and configuration.
+   - It may use connected Tools and Knowledge sources to process the task.
+
+4. **Output Generation**
+   - The Agent generates an output such as a response, data extraction, classification, or action.
+   - Outputs can be reviewed, edited, retried, or approved depending on the workflow.
+
+5. **Tracking and Monitoring**
+   - Task status, execution logs, and outcomes are visible in the Inbox and Dashboard.
+   - Any failures or exceptions can be raised as issues for further review.
+
+This structured approach ensures consistency, traceability, and reliability while handling large volumes of operational work.
+
+---

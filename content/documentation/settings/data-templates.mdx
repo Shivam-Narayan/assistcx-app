@@ -1,0 +1,101 @@
+## Data Templates
+
+Data Templates define the structure and format of information used across tasks and outputs in AssistCX.
+
+They help standardize how data is:
+- Captured
+- Stored
+- Displayed
+- Processed by agents
+
+Instead of generating free-form or inconsistent outputs, templates ensure responses follow a predictable structure.
+
+This improves:
+- Accuracy
+- Consistency
+- Downstream integrations
+- Reporting and analytics
+
+Data Templates are commonly used for structured use cases such as invoice processing, ticket classification, or form-based workflows.
+
+---
+
+### Template List
+
+The Template List shows all available templates configured in the system.
+
+Each entry typically displays:
+- Template name
+- Purpose or description
+- Associated workflow or agent
+- Version number
+- Last updated date
+
+Admins can use this list to:
+- View existing templates
+- Create new templates
+- Edit or update templates
+- Remove unused templates
+
+Keeping templates organized ensures clarity and avoids duplication.
+
+---
+
+### Template Builder Fields
+
+The Template Builder is used to define the structure of the template.
+
+Fields specify what information should be captured or generated.
+
+Typical field properties include:
+- Field name
+- Data type (text, number, date, boolean, etc.)
+- Required or optional
+- Default values
+- Description or label
+
+Example:
+
+For an Invoice Template:
+- Invoice Number (Text)
+- Vendor Name (Text)
+- Due Date (Date)
+- Approval Status (Dropdown)
+
+Clearly defined fields help agents extract and populate data accurately.
+
+---
+
+### Validation Rules
+
+Validation Rules ensure that the data captured in templates meets expected standards.
+
+They prevent incomplete or incorrect data from being processed.
+
+Common validations include:
+- Required fields
+- Data type checks
+- Format rules (e.g., email, date, number)
+- Value ranges
+- Custom business rules
+
+Examples:
+- Amount must be greater than 0
+- Due date cannot be in the past
+- Vendor name cannot be empty
+
+Validation improves data quality and reduces execution errors.
+
+---
+
+### Versioning
+
+Versioning tracks changes made to templates over time.
+
+Each update creates a new version while preserving older ones.
+
+This allows administrators to:
+- Track what changed and when
+- Restore previous versions if needed
+- Avoid breaking existing workflows
+- Maintain audit history

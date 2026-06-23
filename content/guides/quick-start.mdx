@@ -1,0 +1,114 @@
+# Quick Start Guide
+
+Get up and running with AssistCX in 5 minutes.
+
+## Step 1: Install AssistCX
+
+Install the package:
+
+```bash
+npm install assistcx
+```
+
+## Step 2: Basic Setup
+
+Create a basic setup file:
+
+```typescript
+// lib/assistcx.ts
+import { createClient } from 'assistcx'
+
+export const client = createClient({
+  apiKey: process.env.ASSISTCX_API_KEY,
+  apiUrl: 'https://api.assistcx.com'
+})
+```
+
+## Step 3: Make Your First Request
+
+```typescript
+import { client } from '@/lib/assistcx'
+
+// Fetch data
+const data = await client.fetch('/api/data')
+console.log(data)
+
+// Send data
+const result = await client.send({
+  message: 'Hello, AssistCX!'
+})
+```
+
+## Step 4: Use in Components
+
+Create a React component:
+
+```typescript
+'use client'
+
+import { useState, useEffect } from 'react'
+import { client } from '@/lib/assistcx'
+
+export default function DataDisplay() {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadData() {
+      const result = await client.fetch('/api/items')
+      setData(result)
+      setLoading(false)
+    }
+    loadData()
+  }, [])
+
+  if (loading) return <div>Loading...</div>
+  
+  return (
+    <div>
+      <h1>Data</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  )
+}
+```
+
+## Step 5: Handle Errors
+
+Add error handling:
+
+```typescript
+try {
+  const data = await client.fetch('/api/data')
+  console.log(data)
+} catch (error) {
+  console.error('Error:', error.message)
+  // Handle error appropriately
+}
+```
+
+## What's Next?
+
+You're now ready to build with AssistCX! Explore:
+
+- **[Tutorials](/guides/tutorials)** - Comprehensive step-by-step guides
+- **[Recipes](/guides/recipes)** - Quick solutions for common tasks
+- **[Best Practices](/guides/best-practices)** - Recommended patterns
+- **[Documentation](/docs)** - Complete API reference
+
+## Need Help?
+
+- Check the [Troubleshooting](/docs/troubleshooting) guide
+- Visit our [Community Forum](#)
+- Read the [FAQ](/docs#faq)
+
+## Example Projects
+
+Check out these example projects:
+
+- Basic Todo App
+- Real-time Chat
+- Dashboard with Analytics
+- E-commerce Store
+
+[View all examples on GitHub →](#)

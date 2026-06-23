@@ -1,0 +1,110 @@
+
+### Overview
+
+AssistCX follows a **Role-Based Access Control (RBAC)** model to manage user permissions across modules and features.
+
+RBAC ensures:
+- Users access only what their role allows
+- Sensitive operations are restricted
+- Platform governance remains controlled
+
+---
+
+### Roles
+
+| Role | Description |
+|------|------------|
+| **Root** | Super-user with implicit access to all routes. Used by Aexonic during client implementation. Can update permissions, update roles, create agents, create intents, create data templates, etc. |
+| **Account Admin** | Full access across the platform (all modules and management capabilities). |
+| **System Admin** | High-level access including viewing all modules and creating configurations. Restricted from certain account-level administrative actions. |
+| **Group Admin** | Operational-level admin access (view agents, tasks, attachments, mailbox pollings). |
+| **Group Staff** | Basic operational access (dashboard, tasks, attachments, profile). |
+| **Public User** | Limited access primarily for inbox, tasks, and profile-related operations. |
+
+---
+
+### Modules Covered
+
+- Agents & Tools  
+- Dashboards  
+- Data Templates & Intents  
+- Mailbox Pollings  
+- Organization  
+- Task Inbox  
+- Tasks & Outputs  
+- Users & Roles  
+- Web Application  
+
+---
+
+### How RBAC Works
+
+#### 1. Role Assignment
+Users are assigned roles based on responsibilities.  
+Each role has predefined permissions which can be customized if required.
+
+#### 2. Access Control
+Access to modules, endpoints, and features is strictly controlled based on assigned roles.
+
+#### 3. Module Interaction
+Each role interacts differently with modules:
+- **Account Admin** → Full platform control  
+- **System Admin** → Configuration + operational visibility  
+- **Group Admin** → Limited operational management  
+- **Group Staff** → Essential task-level access  
+- **Public User** → Minimal functional access  
+
+---
+
+### Permission Matrix
+
+| Permission | Root | Account Admin | System Admin | Group Admin | Group Staff | Public User |
+|------------|------|---------------|--------------|-------------|-------------|-------------|
+| Create & update agents | Yes | Yes | No | No | No | No |
+| View agents | Yes | Yes | Yes | Yes | No | No |
+| Export agents | Yes | Yes | No | No | No | No |
+| Import agents | Yes | Yes | No | No | No | No |
+| Create & update agent tools | Yes | Yes | No | No | No | No |
+| View agent tools | Yes | Yes | Yes | Yes | No | No |
+| View dashboards | Yes | Yes | Yes | Yes | Yes | Yes |
+| Create & update data templates | Yes | Yes | No | No | No | No |
+| View data templates | Yes | Yes | Yes | No | No | No |
+| Create & update intents | Yes | Yes | No | No | No | No |
+| View intents | Yes | Yes | Yes | No | No | No |
+| Create & update pollings | Yes | Yes | Yes | No | No | No |
+| View mailbox pollings | Yes | Yes | Yes | No | No | No |
+| View organizations | Yes | Yes | Yes | No | No | No |
+| Create configurations | Yes | Yes | Yes | No | No | No |
+| View inbox tasks | Yes | Yes | Yes | Yes | Yes | Yes |
+| Archive email tasks | Yes | Yes | Yes | Yes | Yes | No |
+| Retry agent tasks | Yes | Yes | Yes | Yes | Yes | No |
+| Create email tasks | Yes | Yes | Yes | No | No | No |
+| View attachments | Yes | Yes | Yes | Yes | Yes | Yes |
+| View task outputs | Yes | Yes | Yes | Yes | Yes | Yes |
+| Create & update users | Yes | Yes | Yes | No | No | No |
+| View users | Yes | Yes | Yes | No | No | No |
+| Create & update user roles | Yes | Yes | Yes | No | No | No |
+| View user roles | Yes | Yes | Yes | No | No | No |
+| Manage profile | Yes | Yes | Yes | Yes | Yes | Yes |
+| Web view dashboard | Yes | Yes | Yes | Yes | Yes | Yes |
+| Web view agents | Yes | Yes | Yes | Yes | Yes | No |
+| Web manage inbox | Yes | Yes | Yes | Yes | No | Yes |
+| Web manage task details | Yes | Yes | Yes | Yes | Yes | Yes |
+| Web manage agent tools | Yes | Yes | Yes | Yes | No | No |
+| Web manage mailbox pollings | Yes | Yes | Yes | No | No | No |
+| Web manage data templates | Yes | Yes | Yes | No | No | No |
+| Web manage intent class | Yes | Yes | Yes | No | No | No |
+| Web manage users | Yes | Yes | Yes | No | No | No |
+| Web manage roles | Yes | Yes | Yes | Yes | No | No |
+| Web manage organizations | Yes | Yes | Yes | No | No | No |
+| Web manage profile | Yes | Yes | Yes | Yes | Yes | Yes |
+---
+
+>  **Important Notes**
+
+- Root access is reserved strictly for **platform-level control**
+- Organization-level governance is handled by **Account Admin**
+- Operational control is distributed among **System Admin and Group roles**
+- Public users are intentionally restricted for security and scope control
+
+---

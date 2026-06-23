@@ -1,0 +1,95 @@
+# Real-time Updates
+
+Implement real-time features with WebSockets.
+
+## Setup WebSocket Connection
+
+Create a WebSocket hook:
+
+```typescript
+// hooks/useWebSocket.ts
+import { useEffect, useState } from 'react'
+
+export function useWebSocket(url: string) {
+  const [messages, setMessages] = useState<any[]>([])
+  const [ws, setWs] = useState<WebSocket | null>(null)
+
+  useEffect(() => {
+    const websocket = new WebSocket(url)
+
+    websocket.onopen = () => {
+      console.log('Connected')
+    }
+
+    websocket.onmessage = (event) => {
+      const message = JSON.parse(event.data)
+      setMessages((prev) => [...prev, message])
+    }
+
+    websocket.onclose = () => {
+      console.log('Disconnected')
+    }
+
+    setWs(websocket)
+
+    return () => {
+      websocket.close()
+    }
+  }, [url])
+
+  const sendMessage = (message: any) => {
+    if (ws?.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify(message))
+    }
+  }
+
+  return { messages, sendMessage }
+}
+```
+
+## Use in Component
+
+```typescript
+'use client'
+
+import { useWebSocket } from '@/hooks/useWebSocket'
+
+export default function Chat() {
+  const { messages, sendMessage } = useWebSocket('wss://your-server.com')
+
+  return (
+    <div>
+      <div>
+        {messages.map((msg, i) => (
+          <div key={i}>{msg.text}</div>
+        ))}
+      </div>
+      <button onClick={() => sendMessage({ text: 'Hello!' })}>
+        Send
+      </button>
+    </div>
+  )
+}
+```
+
+## Server-Side WebSocket
+
+Set up a WebSocket server:
+
+```typescript
+// server.ts
+import { WebSocketServer } from 'ws'
+
+const wss = new WebSocketServer({ port: 8080 })
+
+wss.on('connection', (ws) => {
+  ws.on('message', (data) => {
+    // Broadcast to all clients
+    wss.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(data)
+      }
+    })
+  })
+})
+```

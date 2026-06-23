@@ -1,0 +1,186 @@
+
+## Home
+
+### Welcome to AssistCX
+
+AssistCX is an AI-powered operational execution platform built to convert inbound communication into structured, governed, and intelligently executed work.
+
+Most organizations rely on email as the starting point of operational processes. However, email is unstructured by nature. Instructions, approvals, documents, and requests are embedded in conversations that require manual interpretation. Over time, this leads to reactive workflows, inconsistent outputs, and operational inefficiencies.
+
+AssistCX introduces structure into this ecosystem.
+
+Instead of managing emails, teams manage tasks.
+Instead of manually interpreting intent, intelligent Agents process work according to defined rules.
+Instead of relying on human memory, the system maintains traceability across every execution step.
+
+The result is a controlled, scalable operational workflow that balances automation with human oversight.
+
+---
+
+### The AssistCX Execution Lifecycle
+
+AssistCX operates through a governed lifecycle designed for clarity and accountability.
+
+```mermaid
+flowchart LR
+    A[📧 Email] --> B[📝 Task]
+    B --> C[🤖 Agent]
+    C --> D[📤 Output]
+
+    style A fill:#E3F2FD,stroke:#1E88E5,stroke-width:2px,color:#0D47A1
+    style B fill:#E8F5E9,stroke:#43A047,stroke-width:2px,color:#1B5E20
+    style C fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,color:#E65100
+    style D fill:#FCE4EC,stroke:#D81B60,stroke-width:2px,color:#880E4F
+```
+
+
+![Email to Output Flow](./image/flow.png)
+
+##### 1. Ingestion
+
+The platform securely connects to operational mailboxes and monitors incoming communication. Emails are captured and routed into the system for structured processing.
+
+##### 2. Interpretation & Structuring
+
+Incoming emails are analyzed for intent and contextual signals. Based on predefined classifications and routing rules, the system determines the required action and transforms the content into structured metadata.
+
+##### 3. Task Creation
+
+A task is generated with:
+- Defined lifecycle states  
+- Assigned ownership logic  
+- Traceable execution history  
+- Associated attachments and outputs  
+
+From this stage forward, work is no longer an email it is a trackable unit of execution.
+
+##### 4. Agent Processing
+
+An assigned Agent processes the task according to its configuration. During execution, the Agent may:
+
+- Retrieve contextual data  
+- Invoke external systems  
+- Apply business rules  
+- Generate structured outputs  
+
+All actions are governed and auditable.
+
+##### 5. Output & Governance
+
+The system produces an outcome, such as:
+- Structured data extraction  
+- Classification results  
+- Generated responses  
+- Triggered system actions  
+
+Depending on workflow configuration, outputs may:
+- Auto-complete  
+- Require approval  
+- Allow retry  
+- Report as an issue  
+
+##### 6. Monitoring & Visibility
+
+Every task remains visible within the Inbox and Dashboard. Execution logs, retries provide full operational transparency.
+
+---
+
+### What You Can Expect
+
+With AssistCX in place, teams can expect:
+
+- Reduced manual interpretation of emails  
+- Consistent task execution  
+- Clear ownership and lifecycle tracking  
+- Scalable operational throughput  
+- Measurable performance visibility  
+
+AssistCX does not eliminate human oversight it strengthens it through structured automation.
+
+# Documentation
+
+Welcome to the **AssistCX Documentation**. Here you'll find comprehensive guides and documentation to help you work with AssistCX.
+
+## Getting Started
+
+New to AssistCX? Start here to learn the basics:
+
+- [Installation](#installation) - Set up your environment
+- [Configuration](#configuration) - Configure your application
+- [Quick Start](#quick-start) - Get up and running quickly
+
+## Core Concepts
+
+Learn about the fundamental concepts:
+
+- **Architecture** - Understanding the system architecture
+- **API Reference** - Complete API documentation
+- **Authentication** - How authentication works
+- **Data Models** - Working with data structures
+
+## Features
+
+Explore the key features:
+
+- 🚀 **Fast Performance** - Optimized for speed
+- 📚 **Comprehensive API** - Full-featured API
+- 🎨 **Customizable** - Flexible configuration options
+- 🔧 **Developer Friendly** - Easy to integrate
+
+## Installation
+
+Install AssistCX using your preferred package manager:
+
+```bash
+npm install assistcx
+# or
+pnpm add assistcx
+# or
+yarn add assistcx
+```
+
+## Configuration
+
+Create a configuration file in your project root:
+
+```typescript
+// assistcx.config.ts
+export default {
+  apiKey: process.env.ASSISTCX_API_KEY,
+  endpoint: 'https://api.assistcx.com',
+  // Add your configuration options
+}
+```
+
+## Quick Start
+
+Get started with a simple example:
+
+```typescript
+import { AssistCX } from 'assistcx'
+
+const client = new AssistCX({
+  apiKey: 'your-api-key'
+})
+
+// Your first request
+const response = await client.send('Hello, AssistCX!')
+console.log(response)
+```
+
+## Next Steps
+
+Ready to dive deeper?
+
+- Check out the [Guides](/guides) for detailed tutorials
+- View the [Changelog](/changelog) for latest updates
+- Browse the API reference for complete documentation
+
+## Need Help?
+
+If you have questions or need assistance:
+
+- 📖 Read the guides and documentation
+- 💬 Join our community discussions
+- 🐛 Report bugs on GitHub
+- 📧 Contact our support team

@@ -1,0 +1,76 @@
+### Task Actions
+
+Task Actions allow users to manage and intervene in task processing directly from the **Task View**.  
+These actions provide operational control when automated execution requires review, correction, or follow-up.
+
+---
+
+### Change Status
+
+The **Change Status** action allows users to update the lifecycle state of a task.
+
+Common task states include:
+
+- Pending  
+- In Progress  
+- Completed  
+- Failed  
+- On Hold (if configured)
+
+Updating the status helps teams track progress and maintain visibility into the current state of the task.
+
+---
+
+### Add Notes or Comments
+
+Users can add notes to a task to provide additional context or internal communication.
+
+Notes may include:
+
+- Clarifications about the request  
+- Observations during task review  
+- Instructions for other team members  
+
+Notes become part of the task record and help maintain collaboration and traceability.
+
+---
+
+### Retry Task Execution
+
+The **Retry** action allows a task to be processed again using the same configuration.
+
+Retrying is useful when a task fails due to temporary conditions such as external system availability or transient errors.
+
+This action avoids the need to recreate the task from the beginning.
+
+---
+
+### Continue Task Execution
+
+Enable this option to allow users to continue an already executed task by providing follow-up instructions.
+
+When turned on, the **Continue Task** input is shown in **Inbox → Task Details → Execution Steps**, allowing users to refine or extend task execution within the same task context.
+
+This is useful when users need to provide additional guidance, correct extracted information, supply missing details, or request the next action without creating a new task.
+---
+
+### View Activity and Logs
+
+The **Activity** view displays the execution history of a task.
+
+This includes information such as:
+
+- Agent processing steps  
+- Tool invocations  
+- Status updates  
+- Error messages  
+
+Reviewing activity logs helps users understand how the task was processed and identify issues when troubleshooting.
+
+---
+
+### Report or Raise an Issue
+
+If a task produces incorrect results or repeatedly fails during execution, users can raise an issue for further investigation.
+
+Reporting issues ensures that problems are documented and can be reviewed by the appropriate team.

@@ -1,0 +1,98 @@
+## Output
+
+The **Output** section defines how the results of a task are captured and stored.
+
+While **Planning** determines how the agent performs work, Output defines the structure in which the results of that work are recorded.
+
+By defining output fields, you ensure that task results are stored in a consistent format that can be reviewed, validated, or used by other systems.
+
+---
+
+### Overview
+
+Output fields represent the structured data generated after the agent completes a task.
+
+Each field defines a piece of information that the agent should produce during execution.
+
+A typical output field includes:
+
+- **Field Name** – The identifier for the result  
+- **Data Type** – The format of the value (text, number, date, etc.)  
+- **Description** – A short explanation of what the field represents  
+
+These fields form the structured output that is attached to the task after execution.
+
+---
+
+### Creating Output Fields
+
+When no output fields exist, the system displays an empty state.
+
+Select **+ New Output** to define the fields that should capture task results.
+
+When creating a field, provide:
+
+- A clear field name
+- The correct data type
+- A description explaining the purpose of the field
+
+Output fields should match the data produced by the agent during task execution.
+
+---
+
+### Example
+
+A **Invoice Processing Agent** extracts information from invoice documents.
+
+The output structure may include the following fields:
+
+| Field Name | Data Type | Description |
+|-----------|-----------|-------------|
+| Vendor Name | Text | Name of the company issuing the invoice |
+| Invoice Number | Text | Unique identifier of the invoice |
+| Invoice Date | Date | Date on which the invoice was issued |
+| Total Amount | Number | Total amount payable on the invoice |
+
+When the agent processes a document, the extracted values are saved in these fields.
+
+---
+
+### How Output Is Generated
+
+During task execution, the following process occurs:
+
+1. The agent executes the defined planning steps.
+2. Data is extracted, generated, or retrieved.
+3. The agent assigns the results to the configured output fields.
+4. The structured output is saved with the task record.
+
+This structured result becomes part of the task history.
+
+---
+
+### Where Output Is Used
+
+Once generated, the output can be used in several places across the platform:
+
+- Displayed in **Task Details**
+- Used for **review and validation**
+- Sent to **external systems or integrations**
+- Used for **reporting and analytics**
+
+A clear output structure ensures that task results are easy to understand and reuse.
+
+---
+
+### When Structured Output Is Important
+
+Structured output is especially useful when tasks produce data that must be stored or shared with other systems.
+
+Common scenarios include:
+
+- Document data extraction  
+- Customer information retrieval  
+- Compliance validation workflows  
+- Automated reporting processes  
+- Integration with external applications  
+
+For simple agents that only generate responses, fewer output fields may be required.

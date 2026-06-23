@@ -1,0 +1,54 @@
+### Use Knowledge with Agents
+
+Once knowledge collections are created and documents are added, they can be connected to agents.  
+Linking knowledge to an agent allows the agent to reference organizational information while processing tasks.
+
+This enables agents to generate outputs that are factual, consistent, and aligned with documented policies, procedures, or product information.
+
+When knowledge is attached to an agent, the agent can retrieve relevant content from those collections whenever additional context is required during execution.
+
+---
+
+#### Linking Knowledge to an Agent
+
+Knowledge is attached to agents through their configuration.
+
+To link knowledge:
+
+1. Select the agent you want to configure.
+2. Choose the relevant knowledge collections.
+3. Attach those collections to the agent.
+
+Once linked, the agent can access only the collections assigned to it.  
+This ensures that each agent operates with the appropriate knowledge scope.
+
+Using controlled knowledge access provides several benefits:
+
+- Agents retrieve only relevant information
+- Sensitive or unrelated knowledge is not exposed
+- Retrieval results remain focused and accurate
+
+Different agents can use different knowledge collections depending on their operational role.
+
+For example, a **Support Agent** may reference product documentation and FAQs, while a **Finance Agent** may use compliance policies or invoice processing guidelines.
+
+---
+
+#### Search and Retrieval Behavior
+
+When a task is executed, the agent may retrieve information from the linked knowledge collections.
+
+The retrieval process typically follows these steps:
+
+1. The agent receives the task input and context.
+2. The system searches the collections linked to that agent.
+3. Relevant sections from matching documents are retrieved.
+4. The retrieved information is provided to the agent as context for generating the final output.
+
+This retrieval mechanism helps ensure that generated responses are supported by documented information.
+
+As a result:
+
+- Outputs are grounded in real organizational knowledge  
+- Assumptions and hallucinations are reduced  
+- Responses remain consistent across similar requests
