@@ -59,7 +59,7 @@ This will bump the minor version and build for AMD64 platform.
 ### Version Tagging
 
 - The script always builds two Docker image tags:
-  1. The specific version (e.g., `vikasr111/assistcx-web:1.2.3`)
+  1. The specific version (e.g., `sshivam6495/assistcx-web:1.2.3`)
   2. The `latest` tag
 
 ### Git Integration
