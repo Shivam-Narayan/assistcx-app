@@ -13,10 +13,6 @@ const withNextra = nextra({
 /** @type {import('next').NextConfig} */
 export default withNextra({
   output: "standalone",
-  typescript: {
-    // react-hook-form types are incompatible with strict mode in this version
-    ignoreBuildErrors: true,
-  },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },

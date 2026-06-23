@@ -5,8 +5,7 @@ import { X } from "lucide-react";
 
 interface AliasInputProps {
   name: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any, any, any>;
+  control: Control<any>;
   localError?: any;
   setLocalError?: any;
 }

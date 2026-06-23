@@ -180,7 +180,7 @@ const EditDataSchema = ({
                   <FormControl>
                     <AliasInput
                       name="keywords"
-                      control={dataSchemaUpdateForm.control as any}
+                      control={dataSchemaUpdateForm.control}
                       localError={localError}
                       setLocalError={setLocalError}
                     />

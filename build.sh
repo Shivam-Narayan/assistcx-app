@@ -104,22 +104,15 @@ fi
 
 echo "Building web app version: $VERSION"
 
-WEB_APP_IMAGE="sshivam6495/assistcx-web:$VERSION"
-WEB_APP_LATEST="sshivam6495/assistcx-web:latest"
+WEB_APP_IMAGE="vikasr111/assistcx-web:$VERSION"
+WEB_APP_LATEST="vikasr111/assistcx-web:latest"
 
 # Ensure Docker CLI is set to use Buildx
 export DOCKER_CLI_EXPERIMENTAL=enabled
 
-echo "Compiling Next.js natively on Windows to prevent Docker crash..."
-npm run build
-if [ $? -ne 0 ]; then
-  echo "ERROR: Next.js build failed! Fix the errors above and try again."
-  exit 1
-fi
-
-# Build the Docker image using the pre-compiled files
-echo "Packaging assistcx-web:$VERSION into Docker..."
-docker build --no-cache -t $WEB_APP_IMAGE -f Dockerfile.local .
+# Build the Docker image
+echo "Building assistcx-web:$VERSION"
+docker buildx build  --no-cache $PLATFORM -t $WEB_APP_IMAGE . --load
 docker tag $WEB_APP_IMAGE $WEB_APP_LATEST
 
 

@@ -167,7 +167,7 @@ export function SchemaForm({
                       <FormControl>
                         <AliasInput
                           name="keywords"
-                          control={dataSchemaForm.control as any}
+                          control={dataSchemaForm.control}
                           localError={localError}
                           setLocalError={setLocalError}
                         />

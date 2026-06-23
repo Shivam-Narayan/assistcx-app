@@ -17,11 +17,10 @@ ENV CI=true
 RUN npm install -g pnpm
 
 # Install dependencies
-RUN pnpm install
+RUN pnpm install --frozen-lockfile
 
 # Disable telemetry during the build
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 # Build using pnpm
 RUN pnpm build

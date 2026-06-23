@@ -1,20 +1,19 @@
 const meta = {
-  index: {
-    title: 'Home',
-    display: 'hidden'
+  index: 'Overview',
+  'quick-start': 'Quick Start Guide',
+  'migration-guide': 'Migration Guide',
+  '---1': {
+    type: 'separator',
+    title: 'Learning Resources'
   },
-  documentation: {
-    title: 'Documentation',
-    type: 'page'
+  tutorials: 'Tutorials',
+  recipes: 'Recipes',
+  '---2': {
+    type: 'separator',
+    title: 'Best Practices'
   },
-  guides: {
-    title: 'Guides',
-    type: 'page'
-  },
-  changelog: {
-    title: 'Changelog',
-    type: 'page'
-  }
+  'best-practices': 'Best Practices',
+  'common-patterns': 'Common Patterns'
 }
 
 export default meta
