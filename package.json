@@ -3,10 +3,12 @@
   "version": "3.57.1",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "node --max-old-space-size=6144 node_modules/next/dist/bin/next dev --turbopack",
+    "build": "node --max-old-space-size=6144 node_modules/next/dist/bin/next build",
     "start": "next start",
     "lint": "next lint",
+    "clean": "rimraf .next node_modules",
+    "reset": "pnpm run clean && pnpm install",
     "update-browsers": "npx browserslist@latest --update-db"
   },
   "dependencies": {
@@ -121,18 +123,22 @@
     "@types/react-syntax-highlighter": "^15.5.10",
     "baseline-browser-mapping": "^2.9.19",
     "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "nodemon": "^3.0.2",
     "postcss": "^8",
+    "rimraf": "^5.0.5",
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.1.13",
     "typescript": "^5"
   },
-  "pnpm": {
-    "overrides": {
-      "formidable": "^3.5.4",
-      "node-domexception": "^2.0.2"
-    }
+  "resolutions": {
+    "formidable": "^3.5.4",
+    "node-domexception": "^2.0.2"
+  },
+  "overrides": {
+    "formidable": "^3.5.4",
+    "node-domexception": "^2.0.2"
   }
 }

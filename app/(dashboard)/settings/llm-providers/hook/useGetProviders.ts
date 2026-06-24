@@ -27,10 +27,12 @@ const useGetProviders = () => {
         setProviders(data?.integrations ?? []);
       }
     } catch (error: any) {
-      console.error(
-        "Failed to fetch providers:",
-        error?.response?.data || error?.message,
-      );
+      if (error?.response?.status !== 404) {
+        console.error(
+          "Failed to fetch providers:",
+          error?.response?.data || error?.message,
+        );
+      }
       setProviders([]);
     } finally {
       setIsLoading(false);
@@ -43,8 +45,10 @@ const useGetProviders = () => {
       if (result?.status === 200) {
         setAgentllmsList(result?.data?.agent_llms ?? []);
       }
-    } catch (error) {
-      console.error("Failed to fetch Agent LLMs:", error);
+    } catch (error: any) {
+      if (error?.response?.status !== 404) {
+        console.error("Failed to fetch Agent LLMs:", error);
+      }
       setAgentllmsList([]);
     }
   }, [axiosAuth]);
@@ -56,8 +60,10 @@ const useGetProviders = () => {
       if (result?.status === 200) {
         setConfigData(result.data);
       }
-    } catch (error) {
-      console.error("Failed to fetch configuration:", error);
+    } catch (error: any) {
+      if (error?.response?.status !== 404) {
+        console.error("Failed to fetch configuration:", error);
+      }
     } finally {
       setLoadingData(false);
     }

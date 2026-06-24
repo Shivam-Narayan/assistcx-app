@@ -16,7 +16,10 @@ export function useSyncConfigurationTheme() {
       .get(url.GET_CONFIGURATION)
       .then((result) => {
         if (result?.status === 200) {
-          dispatch(setColorTheme(result.data.preferences.theme));
+          const theme = result.data?.preferences?.theme;
+          if (theme) {
+            dispatch(setColorTheme(theme));
+          }
         }
       })
       .catch(console.error);

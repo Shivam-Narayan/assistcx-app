@@ -114,8 +114,10 @@ export const usePreferenceSettings = () => {
         if (result?.status === 200) {
           setAgentllmsList(getActiveLLMModels(result?.data));
         }
-      } catch (error) {
-        console.error(error);
+      } catch (error: any) {
+        if (error?.response?.status !== 404) {
+          console.error("Failed to fetch Agent LLMs:", error);
+        }
       }
     }
   };
@@ -144,10 +146,14 @@ export const usePreferenceSettings = () => {
         const result = await axiosAuth.get(url.GET_CONFIGURATION);
         if (result?.status === 200) {
           setConfigData(result.data);
-          dispatch(setColorTheme(result.data.preferences.theme));
+          if (result.data?.preferences?.theme) {
+            dispatch(setColorTheme(result.data.preferences.theme));
+          }
         }
-      } catch (error) {
-        console.error(error);
+      } catch (error: any) {
+        if (error?.response?.status !== 404) {
+          console.error("Failed to fetch configuration:", error);
+        }
       } finally {
         setLoadingData(false);
       }

@@ -1,3 +1,19 @@
+## Local Development
+
+To run the application locally, first ensure you have the required `.env.local` variables set (such as `NEXTAUTH_BACKEND` and `BACKEND_URL`).
+Additionally, ensure `public/config.json` is properly configured (e.g. `{"BACKEND_URL": "http://127.0.0.1:8000"}`) so the app connects to your local backend.
+
+### Available Scripts
+
+> [!WARNING]
+> **Use pnpm, not npm!** This is a pnpm workspace project. Running `npm install` will corrupt the `node_modules` folder and break the application. Always use `pnpm`!
+
+We have provided convenient pnpm scripts to manage memory limits and clear caches:
+
+- `pnpm run dev`: Starts the Next.js development server. This uses a native Node.js invocation (`--max-old-space-size=6144`) to enforce a 6GB memory limit, avoiding out-of-memory errors.
+- `pnpm run clean`: Instantly removes the `.next` cache and `node_modules` directory.
+- `pnpm run reset`: Runs the clean script, then safely reinstalls all dependencies using `pnpm`. Use this if you experience stale data or corrupt node packages.
+
 ## Build and Version Management
 
 This project uses a custom build script (`build.sh`) to manage versioning and building Docker images for the web application.

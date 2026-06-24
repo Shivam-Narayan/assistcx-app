@@ -112,7 +112,7 @@ export DOCKER_CLI_EXPERIMENTAL=enabled
 
 # Build the Docker image
 echo "Building assistcx-web:$VERSION"
-docker buildx build  --no-cache $PLATFORM -t $WEB_APP_IMAGE . --load
+docker buildx build $PLATFORM -t $WEB_APP_IMAGE . --load
 docker tag $WEB_APP_IMAGE $WEB_APP_LATEST
 
 

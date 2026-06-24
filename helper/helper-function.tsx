@@ -1566,5 +1566,5 @@ export const getProviderByKey = (
   providerList: any[],
   integrationKey?: string,
 ) => {
-  return providerList.find((provider) => provider.key === integrationKey);
+  return (providerList || []).find((provider) => provider.key === integrationKey);
 };

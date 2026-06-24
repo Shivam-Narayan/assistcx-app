@@ -1,0 +1,6 @@
+allowBuilds:
+  core-js: true
+  dtrace-provider: true
+  msw: true
+  sharp: true
+  unrs-resolver: true
