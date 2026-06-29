@@ -17,7 +17,7 @@ ENV CI=true
 RUN npm install -g pnpm
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --no-frozen-lockfile
 
 # Disable telemetry during the build
 ENV NEXT_TELEMETRY_DISABLED=1

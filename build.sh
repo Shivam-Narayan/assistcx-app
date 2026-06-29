@@ -104,8 +104,8 @@ fi
 
 echo "Building web app version: $VERSION"
 
-WEB_APP_IMAGE="sshivam6495/assistcx-web:$VERSION"
-WEB_APP_LATEST="sshivam6495/assistcx-web:latest"
+WEB_APP_IMAGE="assistcx-web:$VERSION"
+WEB_APP_LATEST="assistcx-web:latest"
 
 # Ensure Docker CLI is set to use Buildx
 export DOCKER_CLI_EXPERIMENTAL=enabled
