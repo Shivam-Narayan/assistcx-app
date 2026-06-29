@@ -99,7 +99,7 @@ done
 if [ -n "$BUMP_TYPE" ]; then
     VERSION=$(bump_version "$BUMP_TYPE")
 elif [ -z "$VERSION" ]; then
-    VERSION=$(get_current_version)
+    VERSION=$(get_current_version | tr -d '\r')
 fi
 
 echo "Building web app version: $VERSION"
